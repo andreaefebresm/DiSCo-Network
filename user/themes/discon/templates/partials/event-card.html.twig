@@ -1,0 +1,23 @@
+{% set hero = event.header.hero_image ? event.media[event.header.hero_image] : null %}
+
+<a class="event-card {% if not hero %}event-card--no-media{% endif %}" href="{{ event.url }}">
+
+  {% if hero %}
+    <div class="event-card__media">
+      {{ hero.cropZoom(1200, 700).html(event.title, event.title)|raw }}
+    </div>
+  {% endif %}
+
+  <p class="event-card__kicker">
+    {% if event.header.event_type %}{{ event.header.event_type }}{% else %}event{% endif %}
+    {% if event.header.event_date %} · {{ event.header.event_date|date("M Y") }}{% endif %}
+  </p>
+
+  <div class="event-card__body">
+    <h3 class="event-card__title">{{ event.title }}</h3>
+    {% if event.header.excerpt %}
+      <p class="event-card__excerpt">{{ event.header.excerpt }}</p>
+    {% endif %}
+  </div>
+
+</a>

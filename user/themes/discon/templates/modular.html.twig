@@ -1,0 +1,15 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="grid">
+    {% for module in page.collection() %}
+      {% set tone = module.header.tone|default('light') %}
+      {% set span = module.header.span|default(12) %}
+      <section class="block block--{{ tone }} span-{{ span }}">
+        <div class="block-inner">
+          {{ module.content|raw }}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+{% endblock %}

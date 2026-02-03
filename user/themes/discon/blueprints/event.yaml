@@ -1,0 +1,52 @@
+title: Event
+'@extends':
+  type: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          title: Content
+          fields:
+            header.title:
+              type: text
+              label: Title
+
+            header.event_date:
+              type: datetime
+              label: Date & time
+              format: 'Y-m-d H:i'
+              validate:
+                required: true
+
+            header.location:
+              type: text
+              label: Location (optional)
+
+            header.event_type:
+              type: text
+              label: Type (optional)
+
+            header.excerpt:
+              type: textarea
+              label: Short excerpt (for cards)
+              rows: 3
+
+            header.hero_image:
+              type: filepicker
+              label: Main image (optional)
+              folder: '@self'
+              preview_images: true
+              accept:
+                - .png
+                - .jpg
+                - .jpeg
+                - .webp
+
+            content:
+              type: markdown
+              label: Description

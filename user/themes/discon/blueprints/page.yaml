@@ -1,0 +1,26 @@
+title: Page
+'@extends':
+  type: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.subtitle:
+              type: text
+              label: Subtitle (optional)
+
+            header.prose_style:
+              type: select
+              label: Typography style
+              default: standard
+              options:
+                standard: Standard
+                editorial: Editorial
+                manifesto: Manifesto
+
+            content:
+              type: markdown
+              label: Content

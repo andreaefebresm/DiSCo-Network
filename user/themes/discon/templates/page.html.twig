@@ -1,0 +1,22 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="grid">
+    <section class="block block--light span-12">
+      <div class="block-inner">
+
+        <header class="page-head">
+          <h1 class="page-title">{{ page.title }}</h1>
+          {% if page.header.subtitle %}
+            <p class="page-subtitle">{{ page.header.subtitle }}</p>
+          {% endif %}
+        </header>
+
+        <div class="prose {% if page.header.prose_style %}prose--{{ page.header.prose_style }}{% endif %}">
+          {{ page.content|raw }}
+        </div>
+
+      </div>
+    </section>
+  </div>
+{% endblock %}

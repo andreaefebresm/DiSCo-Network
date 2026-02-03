@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="grid">
+    <section class="block block--{{ site.footer.tone|default('light') }} span-12">
+      <div class="block-inner">
+
+        {% if site.footer.title %}
+          <h2 class="footer-title">{{ site.footer.title }}</h2>
+        {% endif %}
+
+        <div class="contact-grid">
+          <a class="contact-box" href="mailto:{{ site.footer.enquiries_email }}">
+            <strong>Enquiries</strong>
+            <span>{{ site.footer.enquiries_email }} ↗</span>
+          </a>
+
+          <a class="contact-box" href="{{ site.footer.mailing_list_url }}" target="_blank" rel="noopener">
+            <strong>Mailing list</strong>
+            <span>Subscribe ↗</span>
+          </a>
+
+          <a class="contact-box" href="{{ site.footer.instagram_url }}" target="_blank" rel="noopener">
+            <strong>Instagram</strong>
+            <span>{{ site.footer.instagram_handle|default('@discojournal') }} ↗</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</footer>

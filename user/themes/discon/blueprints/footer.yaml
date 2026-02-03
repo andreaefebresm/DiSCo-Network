@@ -1,0 +1,36 @@
+extends@: default
+
+form:
+  fields:
+    footer_section:
+      type: section
+      title: Footer
+      underline: true
+
+    footer.title:
+      type: text
+      label: Footer title
+
+    footer.tone:
+      type: select
+      label: Tone
+      default: light
+      options:
+        light: Light
+        dark: Dark
+
+    footer.enquiries_email:
+      type: text
+      label: Enquiries email
+
+    footer.mailing_list_url:
+      type: text
+      label: Mailing list URL
+
+    footer.instagram_url:
+      type: text
+      label: Instagram URL
+
+    footer.instagram_handle:
+      type: text
+      label: Instagram handle

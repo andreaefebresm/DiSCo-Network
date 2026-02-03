@@ -1,0 +1,10 @@
+/cache/
+/logs/
+/images/
+/tmp/
+/vendor/
+/backup/
+/user/data/
+.DS_Store
+.idea
+

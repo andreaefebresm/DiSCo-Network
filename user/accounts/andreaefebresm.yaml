@@ -1,0 +1,11 @@
+state: enabled
+email: andreae.febresm@gmail.com
+fullname: 'Andrea Elena Febres Medina'
+title: Administrator
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$12$DW3u0I37K2i19aWHBOEFcuHdzvRbxSvMwY0iciedgxljYIg0kCQIi

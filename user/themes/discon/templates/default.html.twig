@@ -1,0 +1,11 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="grid">
+    <section class="block block--light span-12">
+      <div class="block-inner">
+        {{ page.content|raw }}
+      </div>
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+  {% do assets.addCss('theme://css/custom.css', 100) %}
+  {{ assets.css()|raw }}
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-card">
+    <a class="brand" href="{{ base_url_absolute }}">{{ site.title|default('DiSCo Network') }}</a>
+
+    <ul class="nav-links">
+      {% for p in pages.children.visible %}
+        <li>
+          <a href="{{ p.url }}"
+             class="{% if p.active or p.activeChild %}is-active{% endif %}">
+            {{ p.menu }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>
+
+
+
+  <main class="site-main">
+    {% block content %}{% endblock %}
+  </main>
+{% do assets.addJs('theme://js/carousel.js', {group:'bottom'}) %}
+{{ assets.js('bottom')|raw }}
+{% include 'partials/footer.html.twig' %}
+
+</body>
+
+</html>

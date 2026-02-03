@@ -1,0 +1,33 @@
+title: Events
+'@extends':
+  type: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          title: Content
+          fields:
+            header.title:
+              type: text
+              label: Title
+            content:
+              type: markdown
+              label: Intro text (optional)
+        options:
+          type: tab
+          title: Options
+          fields:
+            header.template:
+              type: hidden
+              default: events
+            header.child_type:
+              type: hidden
+              default: event
+            header.order:
+              type: hidden
+              default: folder

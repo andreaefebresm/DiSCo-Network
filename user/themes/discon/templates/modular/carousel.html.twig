@@ -1,0 +1,38 @@
+{% set slides = page.header.slides|default([]) %}
+
+{% if slides|length %}
+<section class="hero-carousel" data-carousel>
+  <div class="hero-track" data-track>
+    {% for s in slides %}
+      <article class="hero-slide" data-slide>
+        {% if s.kicker %}
+          <p class="kicker">{{ s.kicker }}</p>
+        {% endif %}
+
+        <div class="hero-bottom">
+          {% if s.title %}
+            <h1 class="hero-title">{{ s.title }}</h1>
+          {% endif %}
+
+          {% if s.text %}
+            <p class="hero-text">{{ s.text }}</p>
+          {% endif %}
+
+          {% if s.href %}
+            <a class="hero-cta" href="{{ s.href }}"
+               {% if s.href starts with 'http' %}target="_blank" rel="noopener"{% endif %}>
+              {{ s.cta|default('Open') }} ↗
+            </a>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  <nav class="hero-nav">
+    {% for s in slides %}
+      <button class="dot" data-dot="{{ loop.index0 }}" aria-label="Slide {{ loop.index }}"></button>
+    {% endfor %}
+  </nav>
+</section>
+{% endif %}

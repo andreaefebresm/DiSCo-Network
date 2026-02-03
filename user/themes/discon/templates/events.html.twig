@@ -1,0 +1,68 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="grid">
+    <section class=" span-12">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.content %}
+          <div class="page-intro">{{ page.content|raw }}</div>
+        {% endif %}
+
+        {# ordina TUTTI i figli per event_date crescente #}
+        {% set children = page.children.order('header.event_date', 'asc') %}
+        {% set now_ts = "now"|date("U") %}
+
+        {# UPCOMING #}
+        {% set has_upcoming = false %}
+        {% for event in children %}
+          {% if event.header.event_date %}
+            {% set ts = event.header.event_date|date("U") %}
+            {% if ts >= now_ts %}
+              {% if not has_upcoming %}
+                {% set has_upcoming = true %}
+                <section class="events-section">
+                  <header class="events-section__head">
+                    <h2 class="events-section__title">Upcoming</h2>
+                  </header>
+                  <div class="events-grid">
+              {% endif %}
+
+              {% include 'partials/event-card.html.twig' with { event: event } %}
+
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% if has_upcoming %}
+                  </div>
+                </section>
+        {% endif %}
+
+        {# PAST (stessi figli ma in reverse, così è dal più recente al più vecchio) #}
+        {% set has_past = false %}
+        {% for event in children|reverse %}
+          {% if event.header.event_date %}
+            {% set ts = event.header.event_date|date("U") %}
+            {% if ts < now_ts %}
+              {% if not has_past %}
+                {% set has_past = true %}
+                <section class="events-section">
+                  <header class="events-section__head">
+                    <h2 class="events-section__title">Past</h2>
+                  </header>
+                  <div class="events-grid">
+              {% endif %}
+
+              {% include 'partials/event-card.html.twig' with { event: event } %}
+
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% if has_past %}
+                  </div>
+                </section>
+        {% endif %}
+
+  
+    </section>
+  </div>
+{% endblock %}

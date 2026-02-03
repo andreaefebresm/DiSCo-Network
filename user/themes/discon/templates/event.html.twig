@@ -1,0 +1,58 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="grid">
+    <section class="block block--light span-12">
+      <div class="block-inner">
+
+        {% set hero = page.header.hero_image ? page.media[page.header.hero_image] : null %}
+
+        <div class="event-layout">
+
+          <div class="event-media">
+            {% if hero %}
+              {{ hero.cropZoom(1400, 1400).html(page.title, page.title)|raw }}
+            {% else %}
+              <div class="event-media--empty"></div>
+            {% endif %}
+          </div>
+
+          <div class="event-content">
+          <nav class="breadcrumb">
+  <a href="{{ page.parent.url }}">Events</a>
+  <span>/</span>
+  <span>{{ page.title }}</span>
+</nav>
+            <p class="kicker">
+              {% if page.header.event_type %}{{ page.header.event_type }}{% else %}Event{% endif %}
+            </p>
+
+            <h1 class="event-title">{{ page.title }}</h1>
+
+            <div class="event-meta">
+              {% if page.header.event_date %}
+                <div class="event-meta__row">
+                  <span class="event-meta__label">Date</span>
+                  <span class="event-meta__value">{{ page.header.event_date|date("F j, Y · H:i") }}</span>
+                </div>
+              {% endif %}
+
+              {% if page.header.location %}
+                <div class="event-meta__row">
+                  <span class="event-meta__label">Location</span>
+                  <span class="event-meta__value">{{ page.header.location }}</span>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="event-body">
+              {{ page.content|raw }}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </div>
+{% endblock %}
